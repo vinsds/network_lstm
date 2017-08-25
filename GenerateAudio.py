@@ -40,7 +40,10 @@ class GenerateAudio:
             data *= 0.95
 
             folder = './wav_samples/id_experiment_no_'+str(experiment['id_experiment'])
-            os.mkdir(folder)
+
+            if not os.path.isdir(folder):
+                os.mkdir(folder)
+
             write(folder+'/sample_no_'+str(t)+'.wav', self.fs, data)
 
         print "Samples saved into ", folder
@@ -51,3 +54,5 @@ class GenerateAudio:
         x = x.astype('float32')
         y = 2. * (x - (mu + 1.) / 2.) / (mu + 1.)
         return np.sign(y) * (1. / mu) * ((1. + mu) ** np.abs(y) - 1.)
+
+

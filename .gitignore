@@ -96,3 +96,5 @@ ENV/
 .ropeproject
 
 .wav_samples/
+
+*.wav

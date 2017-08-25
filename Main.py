@@ -4,9 +4,9 @@ from Model import *
 from GenerateAudio import *
 
 experiment = {
-    'id_experiment': 2,
+    'id_experiment': 3,
     'lstm_neurons': 100,
-    'n_epochs': 5,
+    'n_epochs': 3,
     'q_levels': 256,
     'lstm_activation': 'softmax',
     'dense_activation': 'relu',
