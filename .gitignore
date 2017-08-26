@@ -95,6 +95,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
-.wav_samples/
-
+export_models/
+logs_experiment
+wav_samples/
 *.wav
