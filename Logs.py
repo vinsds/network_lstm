@@ -21,5 +21,7 @@ class Logs:
         logs.write('Activation LSTM Layer:\t'+str(experiment['lstm_activation'])+"\n")
         logs.write('Activation Dense Layer:\t'+str(experiment['dense_activation'])+"\n")
         logs.write('Batch Size:\t'+str(experiment['batch_size'])+"\n")
+        logs.write('Random Samples:\t'+str(experiment['random'])+"\n")
+        logs.write('Number of sample for training:\t'+str(experiment['train_set_shape'])+"\n")
         print 'Log file created'
         logs.close()

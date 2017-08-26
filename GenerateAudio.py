@@ -17,10 +17,12 @@ class GenerateAudio:
         input_signal = np.array(input_signal, dtype=float)
 
         for t in range(seqs):
+            audio_export = []
+
             print "Creating sample #", t
             # y = valid_dataset[t].reshape(1, valid_dataset[t].shape[0], 1)
             #TODO eliminare 22050, inserire parametro variabile
-            wave = input_signal[t].reshape(1, 22050, 1)
+            wave = input_signal.reshape(1, 22050, 1)
 
             for i in range(1):
 

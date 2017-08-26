@@ -46,6 +46,7 @@ class OneLayer:
 
     @staticmethod
     def training(model, experiment, train_dataset, valid_dataset, random=False):
+        hist = 0
 
         file_name = 'id_%s__neurons_%s__epochs_%s' % (
             experiment['id_experiment'],
@@ -54,6 +55,7 @@ class OneLayer:
         )
 
         for item in range(train_dataset.shape[0]):
+            print item
             if random:
                 from random import randint
                 s = train_dataset[randint(0, train_dataset.shape[0])]
@@ -83,4 +85,5 @@ class OneLayer:
             hist_file = open(folder_history+file_name+'.txt', 'w')
             hist_file.write(str(hist.history))
             hist_file.close()
-            return hist
+
+        return hist

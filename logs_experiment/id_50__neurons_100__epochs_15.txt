@@ -1,0 +1,10 @@
+Id experiment:	50
+Number of layers:	1
+LSTM Neurons:	100
+Number of epochs:	15
+Q_levels:	256
+Activation LSTM Layer:	softmax
+Activation Dense Layer:	softmax
+Batch Size:	2
+Random Samples:	False
+Number of sample for training:	30
