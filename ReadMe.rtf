@@ -4,25 +4,71 @@
 \paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
 
-\f0\fs24 \cf0 Struttura della cartella:\
+\f0\fs24 \cf0 \'91\'92\'92\
+DOC provvisorio \
+creato: 28 Agosto 2017 da Vincenzo Di Sciullo\
+per qualsiasi domanda \
+\'91\'92\'92\
 \
-1_layer:\
+\
+Struttura della cartella:\
+\
+OneLayer:\
 contiene la definizione di una rete realizzata con 1 strato lstm e 1 dense\
 \
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural
-\cf0 2_layers:\
-contiene la definizione di una rete realizzata con 2 strato lstm e 1 dense\
+TwoLayer:\
+contiene la definizione di una rete realizzata con 2 strati lstm e 1 dense\
 \
-3_layers:\
-contiene la definizione di una rete realizzata con 3 strato lstm e 1 dense\
+ThreeLayer:\
+contiene la definizione di una rete realizzata con 3 strati lstm e 1 dense\
+\
+PlotGraph:\
+permette il plot del file history con le relative loss ed, eventualmente, validation loss\
 \
 export_models\
-contiene tutti i modelli delle reti frittate sul dataset di ableton\
+contiene tutti i modelli delle reti frittate sul dataset\
 la cartella contiene 3 sotto cartelle:\
 1) History: file di testo dove sono salvati i valori di loss e validation loss\
 2) Model_Json: contiene il modello in formato Json della rete salvata\
-3) Weight_h5: contiene i pesi dei modelli salvati
-
+3) Weight_h5: contiene i pesi dei modelli salvati\
 \
 wav_samples\
-contiene i samples generati dalla rete}
+contiene i samples generati dalla rete\
+\
+\
+Lanciare un esperimento ADDESTRAMENTO RETE:\
+\
+Settare TRAINING a True se si vuole addestrare una rete\
+\
+TRAINING = True\
+\
+Specificare i parametri dell\'92esperimento\
+\
+experiment = \{\
+    'id_experiment': 52,\
+    'lstm_neurons': 100,\
+    'n_epochs': 30,\
+    'q_levels': 256,\
+    'lstm_activation': 'sigmoid',\
+    'dense_activation': 'softmax',\
+    'batch_size': 2,\
+    'number_of_layers': 1,\
+    'random': False,\
+    'train_set_shape': 30\
+\}\
+\
+avviare il main.\
+\
+\
+Generare campioni:\
+\
+nel metodo export_model.load_model, specificare i nomi dei file relativi al JSON della rete ai pesi.\
+\
+\
+    load_model = export_model.load_model("id_51__neurons_100__epochs_30", "id_51__neurons_100__epochs_30")\
+\
+specificare nella definizione GenerateAudio la frequenza di campionamento del file wav e il numero di wav che si vogliono esportare.\
+\
+audio = GenerateAudio(fs=22050, seqs=1)\
+\
+}

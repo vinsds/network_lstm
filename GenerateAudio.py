@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.io.wavfile import write
 import os
-
+import sys
 
 class GenerateAudio:
 
@@ -9,7 +9,18 @@ class GenerateAudio:
         self.n_seqs = seqs
         self.fs = fs
 
-    def generate_sample(self, input_signal, model, experiment):
+    def generate_sample(self, input_signal, model, log):
+
+        folder = log.main_folder + log.samples_folder
+
+        for dirpath, dirnames, files in os.walk(folder):
+            if str(files).find('.wav') != -1:
+                print 'Folder contains wav files, exporting stopped'
+                sys.exit()
+
+        if not os.path.isdir(folder):
+            os.mkdir(folder)
+
         seqs = self.n_seqs
 
         audio_export = []
@@ -41,14 +52,9 @@ class GenerateAudio:
             data -= 0.5
             data *= 0.95
 
-            folder = './wav_samples/id_experiment_no_'+str(experiment['id_experiment'])
-
-            if not os.path.isdir(folder):
-                os.mkdir(folder)
-
             write(folder+'/sample_no_'+str(t)+'.wav', self.fs, data)
 
-        print "Samples saved into ", folder
+        print "Samples saved into -->", folder
 
     @staticmethod
     def mu2linear(x, mu=255):

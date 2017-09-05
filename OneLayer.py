@@ -9,7 +9,7 @@ class OneLayer:
     def __init__(self):
        print 'created...'
 
-    def create_model(self, experiment, train_dataset, valid_dataset, random=False):
+    def create_model(self, experiment, train_dataset, valid_dataset, log, random=False):
         data_input = Input(
             batch_shape=(
                 1,
@@ -41,11 +41,11 @@ class OneLayer:
         model.compile(loss='categorical_crossentropy', optimizer=Adam())
         model.summary()
 
-        self.training(model, experiment, train_dataset, valid_dataset, random)
+        self.training(model, experiment, train_dataset, valid_dataset, log, random)
         return model
 
     @staticmethod
-    def training(model, experiment, train_dataset, valid_dataset, random=False):
+    def training(model, experiment, train_dataset, valid_dataset, log, random=False):
         hist = 0
 
         file_name = 'id_%s__neurons_%s__epochs_%s' % (
@@ -81,8 +81,9 @@ class OneLayer:
                 batch_size=experiment['batch_size']
             )
 
-            folder_history = './export_models/history/'
-            hist_file = open(folder_history+file_name+'.txt', 'w')
+            #folder_history = './export_models/history/'
+            #hist_file = open(folder_history+file_name+'.txt', 'w')
+            hist_file = open(log.main_folder+ '/' +log.loss_file+'.txt', 'w')
             hist_file.write(str(hist.history))
             hist_file.close()
 

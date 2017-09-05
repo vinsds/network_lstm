@@ -1,6 +1,16 @@
+import os
+import sys
+
 class Logs:
 
     def __init__(self, experiment):
+        #folder = './experiment_id_'+str(experiment['id_experiment'])
+
+        #if not os.path.isdir(folder):
+        #    os.mkdir(folder)
+        #else:
+        #    print "esiste"
+        #print self.folder
 
         file_name = 'id_%s__neurons_%s__epochs_%s' % (
             experiment['id_experiment'],
@@ -25,3 +35,4 @@ class Logs:
         logs.write('Number of sample for training:\t'+str(experiment['train_set_shape'])+"\n")
         print 'Log file created'
         logs.close()
+
